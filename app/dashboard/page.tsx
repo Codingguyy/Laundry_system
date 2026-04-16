@@ -60,7 +60,7 @@ export default function Dashboard() {
 
         <button
           onClick={fetchOrders}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+          className="px-4 py-2 font-semibold border border-1 border border-black bg-blue-300 text-black rounded-lg hover:shadow-md hover:cursor-pointer"
         >
           Sync
         </button>

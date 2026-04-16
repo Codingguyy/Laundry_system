@@ -62,8 +62,11 @@ export default function OrderCard({
         setfetch(!fetchh)
         settriggerdashboard(!triggerdashboard)
     }
-    else if(data.success===false){
-        toast.error("An error occurred")
+    else if(data.success===false &&data.message==="Status changes unsuccessfull"){
+        toast.error("Wrong status update")
+    }
+    else if(data.status===false){
+      toast.error("An error occurred")
     }
   };
 

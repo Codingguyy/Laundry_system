@@ -113,7 +113,7 @@ export default function Createorder(){
         <div className="w-full relative flex-1 flex space-y-2 flex-col items-center py-2 px-6">
             <div className="w-full flex items-center">
                 <span className="text-black text-md">{items.length?`Total garments-${items.length}`:"No garments yet"}</span>
-                <button className="p-2 text-white flex items-center space-x-2 bg-blue-300 rounded-md ml-auto border border-2 border border-blue-500 hover:shadow-md hover:cursor-pointer" onClick={(e)=>{e.stopPropagation();handlemodal()}}><Plus size={14} color="white"/><span>Garments</span></button>
+                <button className="py-1 px-2 font-semibold text-black flex items-center space-x-2 bg-blue-300 rounded-md ml-auto border border-1 border border-black hover:shadow-md hover:cursor-pointer" onClick={(e)=>{e.stopPropagation();handlemodal()}}><Plus size={14} color="black"/><span>Garments</span></button>
             </div>
             {modal?<div className="absolute flex items-center rounded-md bg-white shadow-md px-6 py-2">
                 <span className="text-black text-md mr-1">Garment:</span><Dropdown value={garment_value} onChange={setgarment_value} options={garmentOptions}/>

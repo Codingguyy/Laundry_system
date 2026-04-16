@@ -7,6 +7,7 @@ import { Order } from "@/types/order";
 import { Status } from "@/types/order";
 import { messages } from "@/types/message";
 import { Checkstatus } from "@/utils/checkstatus";
+import { Checkstatusflow } from "@/utils/checkstatusflow";
 export async function PATCH(req:NextRequest,{params}:{params:Promise<{id:string}>}){
   try{
     const {id}=await params;
@@ -26,15 +27,20 @@ export async function PATCH(req:NextRequest,{params}:{params:Promise<{id:string}
   }
   console.log(order)
   if(order){
-    console.log("trigger")
+    if(Checkstatusflow(order.status,data.status)){
   order.status=data.status
   messge.message="Status changes successfull"
+  messagess.push(messge)
   return NextResponse.json({success:true,message:"Status changed successfully"})
   }
-  else{
-    messge.message="Status changed unsuccessfull"
+    else{
+      return NextResponse.json({success:false,message:"Status changes unsuccessfull"})
+    }
   }
-  messagess.push(messge)
+  else{
+    
+  }
+  
 }
 catch(error){
     return NextResponse.json({success:false,message:error})

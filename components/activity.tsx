@@ -36,7 +36,7 @@ export default function ActivityFloatingPanel() {
         const data=await response.json()
         if(data.success){setmessages(data.messages);toast.success("Fetching successfull")}
         else if(data.success===false){
-          //  toast.error("An error occurred")
+          
         }
         setcont(v=>v+1)
   }
