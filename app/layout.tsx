@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navigation from '@/components/navigation'
 import Activity from "@/components/activity";
+import Navigate from "@/components/navigate";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
             },
           }}
         />
+        <Navigate/>
       </body>
     </html>
   );
