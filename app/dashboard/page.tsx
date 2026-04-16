@@ -49,7 +49,7 @@ export default function Dashboard() {
   useEffect(() => {
     fetchOrders()
     fetchorderdetails()
-  }, [triggerdashboard])
+  }, [])
   console.log(orderdetails)
   return (
     <div className="w-full h-screen min-h-0 overflow-y-auto bg-gray-50 p-6 space-y-6" style={{fontFamily:"'Robotomono',monospace"}}>

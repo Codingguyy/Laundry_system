@@ -36,11 +36,11 @@ export async function GET(){
     })
     const messge:messages={
         id:"none",
-        message:"Getting orders detail analytics",
+        message:"Getting Filtering orders",
         createdAt:new Date()
     }
     messagess.push(messge)
-   ordersdetails.totalOrders=orders.length
+    ordersdetails.totalOrders=orders.length
    return NextResponse.json({success:true,ordersdetails:ordersdetails})
    }
    catch(error){

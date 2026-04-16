@@ -52,12 +52,6 @@ catch(error){
 }
 export async function GET():Promise<Response>{
   try{
-    const messge:messages={
-      id:"none",
-      message:"Getting all orders successfull",
-      createdAt:new Date()
-    }
-    messagess.push(messge)
     return Response.json({success:true,orders:orders})
   }
   catch(error){

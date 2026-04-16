@@ -30,6 +30,7 @@ export default function Createorder(){
     const setquantity=Garment_value(s=>s.setquantity)
     const fetchh=Triggerfetch(s=>s.count)
     const setfetch=Triggerfetch(s=>s.setcont)
+    const triggerdashboard=Triggerdashboard(s=>s.count)
     const settriggerdashboard=Triggerdashboard(s=>s.setcont)
     const garmentOptions :garment_value[]= [
   { label: "Shirt", value: "Shirt" },
@@ -78,7 +79,7 @@ export default function Createorder(){
         if(data.success){
             toast.success("Order Successfully created")
             setfetch(false)
-            settriggerdashboard(false)
+            settriggerdashboard(!triggerdashboard)
         }
         else if(!data.success&&(data.message==="Invalid Input"||data.message==="Invalid Garment Input")){
             toast.error("Invalid Input")
@@ -111,7 +112,7 @@ export default function Createorder(){
   </div>
         <div className="w-full relative flex-1 flex space-y-2 flex-col items-center py-2 px-6">
             <div className="w-full flex items-center">
-                <span className="text-black text-md">{items.length?`Total items-${items.length}`:"No items yet"}</span>
+                <span className="text-black text-md">{items.length?`Total garments-${items.length}`:"No garments yet"}</span>
                 <button className="p-2 text-white flex items-center space-x-2 bg-blue-300 rounded-md ml-auto border border-2 border border-blue-500 hover:shadow-md hover:cursor-pointer" onClick={(e)=>{e.stopPropagation();handlemodal()}}><Plus size={14} color="white"/><span>Garments</span></button>
             </div>
             {modal?<div className="absolute flex items-center rounded-md bg-white shadow-md px-6 py-2">

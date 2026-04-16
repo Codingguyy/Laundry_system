@@ -1,5 +1,7 @@
 "use client"
 import toast from "react-hot-toast";
+import { Triggerfetch } from "@/store/zustand"
+import { Triggerdashboard } from "@/store/zustand";
 type Status = "RECEIVED" | "PROCESSING" | "READY" | "DELIVERED";
 
 type order_items = {
@@ -39,6 +41,10 @@ export default function OrderCard({
   order: Order;
   onStatusChange: (id: string, status: Status) => void;
 }) {
+  const fetchh=Triggerfetch(s=>s.count)
+  const setfetch=Triggerfetch(s=>s.setcont)
+  const triggerdashboard=Triggerdashboard(s=>s.count)
+  const settriggerdashboard=Triggerdashboard(s=>s.setcont)
   const handleChange = async (newStatus: Status) => {
     console.log("triggering")
     const response=await fetch(`/api/orders/${order.id}`,{
@@ -53,6 +59,8 @@ export default function OrderCard({
         toast.success("Status changes successfully")
         console.log("status changed")
         onStatusChange(order.id,newStatus)
+        setfetch(!fetchh)
+        settriggerdashboard(!triggerdashboard)
     }
     else if(data.success===false){
         toast.error("An error occurred")

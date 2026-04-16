@@ -41,12 +41,10 @@ export default function ActivityFloatingPanel() {
         setcont(v=>v+1)
   }
   useEffect(()=>{
-    
     handlefetchmessages()
     console.log("triggeringgg")
-    
     return ()=>{setcont(2)}
-  },[triggermessage])
+  },[triggerdashboard])
   console.log(messages)
   return (
     <>

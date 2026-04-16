@@ -29,6 +29,7 @@ export default function Ordersss(){
     const setcont=Triggercount(s=>s.setcont)
     const fetchh=Triggerfetch(s=>s.count)
     const setfetch=Triggerfetch(s=>s.setcont)
+    const triggerdashboard=Triggerdashboard(s=>s.count)
     const settriggerdashboard=Triggerdashboard(s=>s.setcont)
     const options: { value: Status, label: Status }[] = [
         { value: "DELIVERED", label: "DELIVERED" },
@@ -56,7 +57,6 @@ export default function Ordersss(){
         if(data.success){
             setorders(data.orders)
             setfetch(true)
-            settriggerdashboard(false)
         }
         else if(data.success === false){
             toast.error("An error occured")
@@ -91,7 +91,7 @@ export default function Ordersss(){
         if(data.success){
             setorders(data.orders)
             setcont(false)
-            settriggerdashboard(false)
+            settriggerdashboard(!triggerdashboard)
         }
         else if(data.success === false){
             toast.error("An error occurred")
@@ -145,7 +145,7 @@ export default function Ordersss(){
 
             if(data.success){
                 setorders(data.orders)
-                settriggerdashboard(false)
+                settriggerdashboard(!triggerdashboard)
             }
             else if(data.success === false){
                 toast.error("An error occurred")
@@ -169,16 +169,14 @@ export default function Ordersss(){
     useEffect(() => {
         if(count){
         handlefilter()
-        console.log("triggeringggggg")
         }
     }, [filterstatus])
     useEffect(()=>{
-        if(!fetchh)
         handlegetorders()
     },[fetchh])
     console.log(orderss)
     return(
-        <div className="max-w-9xl w-screen h-screen flex flex-col items-center bg-white space-y-11 px-2 py-2" style={{fontFamily:"'Robotomono',monospace"}}>
+        <div className="max-w-9xl w-screen h-screen overflow-y-auto flex flex-col items-center bg-white space-y-11 px-2 py-2" style={{fontFamily:"'Robotomono',monospace"}}>
             <div className="w-full flex items-center space-x-2 py-2 px-6">
                 <span className="text-3xl text-black">Orders List</span>
                 <CornerRightDown size={23} color="black" className="mt-2"/>
