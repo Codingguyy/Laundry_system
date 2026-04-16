@@ -46,9 +46,9 @@ catch(error){
     return NextResponse.json({success:false,message:error})
 }
 }
-export async function GET({params}:{params:{id:string}}){
+export async function GET(req:NextRequest,context:{params:{id:string}}){
   try{
-    const id=params.id
+    const id=context.params.id
     if(!id){
         return NextResponse.json({success:false,message:"No id given"})
     }
