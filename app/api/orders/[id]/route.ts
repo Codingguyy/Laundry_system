@@ -8,9 +8,9 @@ import { Status } from "@/types/order";
 import { messages } from "@/types/message";
 import { Checkstatus } from "@/utils/checkstatus";
 import { Checkstatusflow } from "@/utils/checkstatusflow";
-export async function PATCH(req:NextRequest,{params}:{params:Promise<{id:string}>}){
+export async function PATCH(req:NextRequest,{params}:{params:{id:string}}){
   try{
-    const {id}=await params;
+    const id=params.id
   const data:statustype=await req.json()
   console.log(id,data)
   if(!data.status||!Checkstatus(data.status)){
@@ -46,9 +46,9 @@ catch(error){
     return NextResponse.json({success:false,message:error})
 }
 }
-export async function GET({params}:{params:Promise<{id:string}>}){
+export async function GET({params}:{params:{id:string}}){
   try{
-    const {id}=await params
+    const id=params.id
     if(!id){
         return NextResponse.json({success:false,message:"No id given"})
     }
