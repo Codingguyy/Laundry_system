@@ -15,7 +15,7 @@ type Message = {
 }
 
 export default function ActivityFloatingPanel() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [count,setcont]=useState(0)
   const messages=Message(s=>s.messge)
   const setmessages=Message(s=>s.setmessage)

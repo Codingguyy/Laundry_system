@@ -42,7 +42,6 @@ export default function Dashboard() {
   } const data=await response.json()
   if(data.success) {setorderdetails(data.ordersdetails);settriggermessage(true)}
   else if(data.success===false){
-    toast.error("An error occurred")
     console.log("error")
   }
   }
