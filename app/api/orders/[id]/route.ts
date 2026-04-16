@@ -8,9 +8,9 @@ import { Status } from "@/types/order";
 import { messages } from "@/types/message";
 import { Checkstatus } from "@/utils/checkstatus";
 import { Checkstatusflow } from "@/utils/checkstatusflow";
-export async function PATCH(req:NextRequest,{params}:{params:{id:string}}){
+export async function PATCH(req:NextRequest,context:{params:Promise<{id:string}>}){
   try{
-    const id=params.id
+    const {id}=await context.params
   const data:statustype=await req.json()
   console.log(id,data)
   if(!data.status||!Checkstatus(data.status)){
