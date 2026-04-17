@@ -122,7 +122,7 @@ export default function Createorder(){
                 <button className="py-2 px-2 text-black border border-1 border border-black text-sm rounded-md bg-blue-300 hover:shadow-md hover:cursor-pointer ml-6" onClick={(e)=>{e.stopPropagation();handleaddgarments()}}><Check size={14} color="black"/></button>
                 <button className="py-2 px-2 text-black border border-1 border border-black text-sm rounded-md bg-red-300 hover:shadow-md hover:cursor-pointer ml-6" onClick={(e)=>{e.stopPropagation();setmdal(false)}}><X size={14} color="white"/></button>
             </div>:<></>}
-            <div className="w-full  lg:h-[257px] 2xl:h-[377px] overflow-y-auto flex flex-col items-center border border-black no-scrollbar rounded-[30px] py-2 px-6">
+            <div className="w-full lg:h-[237px] 2xl:h-[377px] overflow-y-auto flex flex-col items-center border border-black no-scrollbar rounded-[30px] py-2 px-6">
     
     {items.length?items.map((data, idx) => (
       <div
