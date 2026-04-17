@@ -47,6 +47,10 @@ export type messages={
     setmessage:(value:message[])=>void,
     removemessage:(value:number)=>void
 }
+export type loading={
+    load:boolean,
+    setload:(value:boolean)=>void
+}
 export const Create_order=create<create_order>((set)=>({
     name:"",
     phone_no:"",
@@ -119,4 +123,12 @@ export const Mainorders=create<orders>((set)=>({
     orderss:[],
     setodrs:(value)=>set({orderss:value}),
     setupdatestatus:(id,status)=>set((v)=>({orderss:v.orderss.filter(data=>data.id===id?{...data,status:status}:data)}))
+}))
+export const Dashboardloading=create<loading>((set)=>({
+    load:false,
+    setload:(value)=>set({load:value})
+}))
+export const Ordersload=create<loading>((set)=>({
+    load:false,
+    setload:(value)=>set({load:value})
 }))

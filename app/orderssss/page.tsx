@@ -11,6 +11,7 @@ import { Triggercount } from "@/store/zustand"
 import { Triggerfetch } from "@/store/zustand"
 import { Triggerdashboard } from "@/store/zustand"
 import { Mainorders } from "@/store/zustand"
+import { Ordersload } from "@/store/zustand"
 import { Status } from "@/types/order"
 import toast from "react-hot-toast"
 
@@ -35,6 +36,8 @@ export default function Ordersss(){
     const mainorders=Mainorders(s=>s.orderss)
     const setmainorders=Mainorders(s=>s.setodrs)
     const setmainorderstatus=Mainorders(s=>s.setupdatestatus)
+    const ordersloading=Ordersload(s=>s.load)
+    const setordersloading=Ordersload(s=>s.setload)
     const options: { value: Status, label: Status }[] = [
         { value: "DELIVERED", label: "DELIVERED" },
         { value: "PROCESSING", label: "PROCESSING" },
@@ -61,6 +64,7 @@ export default function Ordersss(){
         if(data.success){
             setorders(data.orders)
             setmainorders(data.orders)
+            setordersloading(false)
         }
         else if(data.success === false){
             toast.error("An error occured")
@@ -79,6 +83,7 @@ export default function Ordersss(){
         ref.current = setTimeout(() => {
             handletriggerfilter(filterstatus)
             toast.success("Successfully send")
+            setordersloading(true)
         }, 1500)
     }
 
@@ -96,6 +101,7 @@ export default function Ordersss(){
             setorders(data.orders)
             setcont(false)
             settriggerdashboard(!triggerdashboard)
+            setordersloading(false)
         }
         else if(data.success === false){
             toast.error("An error occurred")
@@ -112,6 +118,7 @@ export default function Ordersss(){
         searchref.current = setTimeout(() => {
             handlesearchfilter(value)
             toast.success("Successfully send")
+            setordersloading(true)
         }, 1100)
     }
 
@@ -150,6 +157,7 @@ export default function Ordersss(){
             if(data.success){
                 setorders(data.orders)
                 settriggerdashboard(!triggerdashboard)
+                setordersloading(false)
             }
             else if(data.success === false){
                 toast.error("An error occurred")
@@ -176,6 +184,7 @@ export default function Ordersss(){
         }
     }, [filterstatus])
     useEffect(()=>{
+        setordersloading(true)
         handlegetorders()
     },[fetchh])
     console.log(orderss)
@@ -210,8 +219,8 @@ export default function Ordersss(){
                         onStatusChange={setorderstatus}
                     />
                 ):<div className="mt-28 flex items-center justify-start space-x-2">
-                    <PackageX size={73} color="black"/>
-                    <span className="text-bold text-3xl text-black">No orders</span>
+                    {ordersloading?<span className="text-bold text-3xl text-black">Loading...</span>:<><PackageX size={73} color="black"/>
+                    <span className="text-bold text-3xl text-black"></span></>}
                 </div>}
             </div>
         </div>

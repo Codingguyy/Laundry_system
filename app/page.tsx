@@ -6,6 +6,7 @@ import { Orderss } from "@/store/zustand"
 import { Orderdetails } from "@/store/zustand"
 import { Triggerdashboard } from "@/store/zustand"
 import { Triggermessage } from "@/store/zustand"
+import { Dashboardloading } from "@/store/zustand"
 import toast from "react-hot-toast"
 type Order = {
   id: string
@@ -21,6 +22,8 @@ export default function Dashboard() {
   const triggerdashboard=Triggerdashboard(s=>s.count)
   const settriggerdashboard=Triggerdashboard(s=>s.setcont)
   const settriggermessage=Triggermessage(s=>s.setcont)
+  const dashboardloading=Dashboardloading(s=>s.load)
+  const setdashboardloading=Dashboardloading(s=>s.setload)
   async function fetchOrders() {
     const response = await fetch("/api/orders/createorder",{method:'GET'})
      if (!response.ok) {
@@ -40,13 +43,14 @@ export default function Dashboard() {
     console.error("API error:", text);
     return;
   } const data=await response.json()
-  if(data.success) {setorderdetails(data.ordersdetails);settriggermessage(true)}
+  if(data.success) {setorderdetails(data.ordersdetails);settriggermessage(true);setdashboardloading(false)}
   else if(data.success===false){
     console.log("error")
   }
   }
   useEffect(() => {
     fetchOrders()
+    setdashboardloading(true)
     fetchorderdetails()
   }, [])
   console.log(orderdetails)
@@ -181,7 +185,7 @@ export default function Dashboard() {
   </div>
 )):<div className="h-[107px] w-full flex items-center justify-center space-x-2 ">
     <PackageX size={37} color="black"/>
-    <span className="text-xl text-black">No orders yet</span>
+    <span className="text-xl text-black">{dashboardloading?`Loading...`:`No orders yet`}</span>
     </div>}
         </div>
       </div>
