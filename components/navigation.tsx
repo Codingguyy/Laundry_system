@@ -10,7 +10,7 @@ export default function QuickNavigation(){
     const setvlue=Navigation(s=>s.setvlue)
     function handlenavigate(value:number){
         if(value===1){
-            router.push("/dashboard")
+            router.push("/")
         }
         else if(value===2){
             router.push("/orderssss")

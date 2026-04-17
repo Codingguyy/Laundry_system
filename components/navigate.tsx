@@ -5,7 +5,7 @@ import toast from "react-hot-toast"
 export default function Navigate(){
     const router=useRouter()
     useEffect(()=>{
-        router.push("/dashboard")
+        router.push("/")
         toast.success("For navigation use quick navigation icon at top middle")
     },[])
     return(
