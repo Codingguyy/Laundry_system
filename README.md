@@ -138,14 +138,13 @@ The system simulates a real-world laundry workflow while keeping implementation 
 
 ```bash
 app/
-├── dashboard/
-│   └── page.tsx              # Dashboard (analytics view)
+├── page.tsx                     # Main Dashboard (default route)
 │
 ├── createorder/
-│   └── page.tsx              # Create Order page
+│   └── page.tsx                # Create Order page
 │
 ├── orderssss/
-│   └── page.tsx              # Orders list + filtering
+│   └── page.tsx                # Orders list + filtering
 │
 ├── api/
 │   ├── orders/
@@ -155,57 +154,56 @@ app/
 │   │   ├── createorder/
 │   │   │   └── route.ts              # Dedicated create order endpoint
 │   │   └── ordersdetails/
-│   │       └── route.ts              # Additional order-related operations
+│   │       └── route.ts              # Additional order-related APIs
 │   │
 │   └── messages/
 │       └── getactivity/
 │           └── route.ts              # Activity / message logs API
 │
 components/
-├── activity.tsx             # Floating activity/message panel
-├── dropdown.tsx             # Reusable dropdown component
-├── navigate.tsx             # Navigation helper
-├── navigation.tsx           # Main navigation UI
-├── ordercard.tsx            # Order display card
-└── orderpricing.ts          # Pricing display logic
+├── activity.tsx               # Floating activity/message panel (React RND)
+├── dropdown.tsx               # Reusable dropdown component
+├── navigate.tsx               # Navigation helper logic
+├── navigation.tsx             # Main navigation UI
+├── ordercard.tsx              # Order display card
+└── orderpricing.ts            # Pricing display logic
 │
 utils/
-├── calc_price.ts                     # Total price calculation logic
+├── calc_price.ts                     # Total price calculation
 ├── checkstatus.ts                   # Status validation
-├── checkstatusflow.ts              # Status flow control (RECEIVED → DELIVERED)
-└── formatinputitemstoorderitems.ts # Input transformation logic
+├── checkstatusflow.ts              # Status transition rules
+└── formatinputitemstoorderitems.ts # Input → Order items transformation
 │
 types/
-├── message.ts              # Message type definitions
-├── order.ts                # Order and item types
+├── message.ts              # Message types
+├── order.ts                # Order + item types
 └── utils.ts                # Shared utility types
 │
 store/
 ├── store.ts                # In-memory database
-└── zustand.ts              # Zustand global state management
+└── zustand.ts              # Zustand global state
 ```
 
 ---
 
-## 🧠 Structure Explanation
+## 🧠 Structure Notes
 
-* **`app/`** → Contains all pages and API routes using Next.js App Router
-* **`api/`** → Backend logic for order management and activity tracking
-* **`components/`** → Reusable UI components including draggable panels
-* **`utils/`** → Core business logic (pricing, validation, transformations)
-* **`types/`** → TypeScript definitions for type safety
-* **`store/`** → In-memory database and global state (Zustand)
+* **`page.tsx`** now acts as the **dashboard (main entry point)**
+* API routes are modular and separated by responsibility
+* UI is component-driven with reusable building blocks
+* Business logic is isolated inside `utils/`
+* Global state + in-memory DB handled inside `store/`
 
 ---
 
 ## ⚠️ Notes
 
-* The project uses **in-memory storage**, so data resets on server restart
-* Some folder names (e.g., `orderssss`) are kept as-is to match the repository
-* API structure is slightly expanded to support modular operations
-* UI components include **floating draggable panels (React RND)** for enhanced usability
+* Folder names like `orderssss` are preserved to match the repository
+* No database is used — data is stored in memory
+* Floating UI components (navigation + activity panel) enhance usability
 
 ---
+
 
 ## 🧾 Sample Prompts Used (AI Requirement)
 
