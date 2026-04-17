@@ -18,9 +18,11 @@ To build a system that allows staff to:
 
 ## 🚀 Live Demo
 
-laundry-system-vak5.vercel.app
+https://laundry-system-vak5.vercel.app
 
 ---
+##  💻 GitHub Repository
+https://github.com/Codingguyy/Laundry_system
 
 ## ⚙️ Setup Instructions
 
