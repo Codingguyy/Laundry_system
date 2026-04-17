@@ -2,6 +2,7 @@
 import toast from "react-hot-toast";
 import { Triggerfetch } from "@/store/zustand"
 import { Triggerdashboard } from "@/store/zustand";
+import { Mainorders } from "@/store/zustand";
 type Status = "RECEIVED" | "PROCESSING" | "READY" | "DELIVERED";
 
 type order_items = {
@@ -45,6 +46,7 @@ export default function OrderCard({
   const setfetch=Triggerfetch(s=>s.setcont)
   const triggerdashboard=Triggerdashboard(s=>s.count)
   const settriggerdashboard=Triggerdashboard(s=>s.setcont)
+  const setmainorderstatus=Mainorders(s=>s.setupdatestatus)
   const handleChange = async (newStatus: Status) => {
     console.log("triggering")
     const response=await fetch(`/api/orders/${order.id}`,{
@@ -59,6 +61,7 @@ export default function OrderCard({
         toast.success("Status changes successfully")
         console.log("status changed")
         onStatusChange(order.id,newStatus)
+        setmainorderstatus(order.id,newStatus)
         setfetch(!fetchh)
         settriggerdashboard(!triggerdashboard)
     }

@@ -37,7 +37,7 @@ export default function ActivityFloatingPanel() {
         if(data.success){setmessages(data.messages);toast.success("Fetching successfull")}
         else if(data.success===false){
           
-        }
+        }console.log("error")
         setcont(v=>v+1)
   }
   useEffect(()=>{

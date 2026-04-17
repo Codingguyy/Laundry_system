@@ -115,3 +115,8 @@ export const Triggermessage=create<triggercount>((set)=>({
     count:false,
     setcont:(value)=>set({count:value})
 }))
+export const Mainorders=create<orders>((set)=>({
+    orderss:[],
+    setodrs:(value)=>set({orderss:value}),
+    setupdatestatus:(id,status)=>set((v)=>({orderss:v.orderss.filter(data=>data.id===id?{...data,status:status}:data)}))
+}))

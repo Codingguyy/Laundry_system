@@ -10,6 +10,7 @@ import { Orderss } from "@/store/zustand"
 import { Triggercount } from "@/store/zustand"
 import { Triggerfetch } from "@/store/zustand"
 import { Triggerdashboard } from "@/store/zustand"
+import { Mainorders } from "@/store/zustand"
 import { Status } from "@/types/order"
 import toast from "react-hot-toast"
 
@@ -31,6 +32,9 @@ export default function Ordersss(){
     const setfetch=Triggerfetch(s=>s.setcont)
     const triggerdashboard=Triggerdashboard(s=>s.count)
     const settriggerdashboard=Triggerdashboard(s=>s.setcont)
+    const mainorders=Mainorders(s=>s.orderss)
+    const setmainorders=Mainorders(s=>s.setodrs)
+    const setmainorderstatus=Mainorders(s=>s.setupdatestatus)
     const options: { value: Status, label: Status }[] = [
         { value: "DELIVERED", label: "DELIVERED" },
         { value: "PROCESSING", label: "PROCESSING" },
@@ -56,7 +60,7 @@ export default function Ordersss(){
 
         if(data.success){
             setorders(data.orders)
-            setfetch(true)
+            setmainorders(data.orders)
         }
         else if(data.success === false){
             toast.error("An error occured")
@@ -115,11 +119,11 @@ export default function Ordersss(){
         let checkname = false
         let checkphone = false
 
-        if(orderss.length){
-            if(orderss.find(data => data.customerName === value)){
+        if(mainorders.length){
+            if(mainorders.find(data => data.customerName === value)){
                 checkname = true
             }
-            else if(orderss.find(data => data.phone === value)){
+            else if(mainorders.find(data => data.phone === value)){
                 checkphone = true
             }
         }
