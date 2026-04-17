@@ -99,7 +99,7 @@ export default function Createorder(){
                     <span>Create_order</span>
                     <button className="text-black bg-blue-300 rounded-md border border-1 border border-black text-sm ml-auto py-1 px-2 hover:shadow-md hover:cursor-pointer" onClick={(e)=>{e.stopPropagation();handlecreateorder()}}>Create Order</button>
                 </div>
-                <label htmlFor="Name" className="text-black text-md mt-2">Custmore_Name:</label>
+                <label htmlFor="Name" className="text-black text-md mt-2">Customer_Name:</label>
                 <input id="Name" value={name} className="w-[73%] px-4 py-2 mb-4 text-gray-500 border border-gray-300 rounded-lg 
   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
   transition" placeholder="Enter customer name..." onChange={(e)=>{e.stopPropagation();setname(e.target.value)}}/>
