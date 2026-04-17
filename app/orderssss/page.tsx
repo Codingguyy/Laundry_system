@@ -173,7 +173,7 @@ export default function Ordersss(){
     }, [filterstatus])
     useEffect(()=>{
         handlegetorders()
-    },[fetchh,count])
+    },[fetchh])
     console.log(orderss)
     return(
         <div className="max-w-9xl w-screen h-screen overflow-y-auto flex flex-col items-center bg-white space-y-11 px-2 py-2" style={{fontFamily:"'Robotomono',monospace"}}>
